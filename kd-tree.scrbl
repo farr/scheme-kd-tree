@@ -65,6 +65,16 @@ the coordinates of an object.)
 
 Constructs a kD tree from the given @scheme[objects].  The
 @scheme[->coords] procedure is used to extract the coordinates from an
-object.  
+object.  To construct a kD tree from @scheme[n] objects takes time of
+order @scheme[(* n (log n))].
 
 }
+
+@subsection{A Note on @scheme[->coords] Procedures}
+
+Both @scheme[objects->kd-tree] and @scheme[objects->bounds] use
+procedures (@scheme[->coords]) to extract the coordinates of an
+object.  This packages makes no attempt to minimize the number of
+times such a procedure is called (i.e. by caching the output, or by
+other means), so it is in the interest of the user of this package to
+make the @scheme[->coords] procedure as fast as possible.
